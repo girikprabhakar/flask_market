@@ -2,9 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+import os
+from market.config import DEV_DB, PROD_DB
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
+if os.getenv('DEBUG') == '1':
+    app.config['SQLALCHEMY_DATABASE_URI'] = DEV_DB
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = PROD_DB
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '2ee0e926b76519b1ac4c7fdd'
 db = SQLAlchemy(app)
