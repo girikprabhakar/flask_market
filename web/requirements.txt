@@ -1,0 +1,10 @@
+email-validator
+Flask
+Flask-Bcrypt
+Flask-Login
+Flask-SQLAlchemy
+Flask-WTF
+gunicorn
+SQLAlchemy
+WTForms==3.0.1
+psycopg2
