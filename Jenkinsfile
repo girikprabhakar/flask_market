@@ -35,7 +35,7 @@ pipeline{
             {
                 script 
                 {
-                    sh 'docker image tag 8285/flask_market:latest flask_market:latest '
+                    sh 'docker image tag flask_market:latest 8285/flask_market:latest'
                     withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) 
                     {                        
                         sh 'docker login -u 8285 -p ${dockerhub}'
