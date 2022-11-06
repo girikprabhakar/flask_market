@@ -17,7 +17,7 @@ pipeline{
                 echo "Docker Compose up"
                 script
                 {
-                    sh 'docker-compose up'
+                    sh 'docker-compose up -d'
                 }
             }
             
