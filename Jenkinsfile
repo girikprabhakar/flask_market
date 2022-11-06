@@ -1,8 +1,5 @@
 pipeline{
-    agent
-    {
-        label "docker-build server"
-    }
+    agent any
     stages
     {
         stage("Checkout Code")
