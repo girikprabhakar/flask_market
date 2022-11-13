@@ -7,7 +7,6 @@ pipeline{
             steps
             {
                 echo "Checkout Code"
-
             }
         }
         stage("Docker Compose up")
@@ -42,6 +41,13 @@ pipeline{
                         sh 'docker push 8285/flask_market'
                     }
                 }
+            }
+        }
+        stage("Clean Up")
+        {
+            steps
+            {
+                sh "./cleanup.sh"
             }
         }
     }
