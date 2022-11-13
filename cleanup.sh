@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker images
-touch test.txt
+docker-compose down
+docker image prune -a
