@@ -47,6 +47,7 @@ pipeline{
         {
             steps
             {
+                sh "chmod +x -R ${env.WORKSPACE}"
                 sh "./cleanup.sh"
             }
         }
