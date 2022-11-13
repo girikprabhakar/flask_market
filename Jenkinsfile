@@ -2,6 +2,13 @@ pipeline{
     agent any
     stages
     {
+        environment
+        {
+            IMAGE = "flask_market"
+            IMAGE_NEW_NAME = "8285/flask_market"
+            TAG = "latest"
+            USERNAME = "8285"
+        }
         stage("Checkout Code")
         {
             steps
@@ -30,24 +37,24 @@ pipeline{
         }
         stage("Publishing Docker Image")
         {
-            when
-            {
-                anyOf 
-                {
-                    branch "release*"
-                    branch "main"
-                    branch "master"
-                }
-            }
+            // when
+            // {
+            //     anyOf 
+            //     {
+            //         branch "release*"
+            //         branch "main"
+            //         branch "master"
+            //     }
+            // }
             steps
             {
                 script 
                 {
-                    sh 'docker image tag flask_market:latest 8285/flask_market:latest'
+                    sh 'docker image tag $IMAGE:$TAG $IMAGE_NEW_NAME:$TAG'
                     withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) 
                     {                        
-                        sh 'docker login -u 8285 -p ${dockerhub}'
-                        sh 'docker push 8285/flask_market'
+                        sh 'docker login -u $USERNAME -p ${dockerhub}'
+                        sh 'docker push $IMAGE_NEW_NAME'
                     }
                 }
             }
