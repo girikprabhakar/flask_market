@@ -28,8 +28,17 @@ pipeline{
                 echo "Executing Tests"
             }
         }
-        stage("Pushing Web Image")
+        stage("Publishing Docker Image")
         {
+            when
+            {
+                anyOf 
+                {
+                    branch "release*"
+                    branch "main"
+                    branch "master"
+                }
+            }
             steps
             {
                 script 
