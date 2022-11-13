@@ -1,5 +1,8 @@
 pipeline{
-    agent any
+    agent
+    {
+        label: "docker-build-server"
+    }
     environment
         {
             IMAGE = "flask_market"
