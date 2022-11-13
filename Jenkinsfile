@@ -1,7 +1,8 @@
-pipeline{
+pipeline
+{
     agent
     {
-        label: "docker-build-server"
+        label "docker-build-server"
     }
     environment
         {
