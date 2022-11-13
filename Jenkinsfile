@@ -1,14 +1,14 @@
 pipeline{
     agent any
-    stages
-    {
-        environment
+    environment
         {
             IMAGE = "flask_market"
             IMAGE_NEW_NAME = "8285/flask_market"
             TAG = "latest"
             USERNAME = "8285"
         }
+    stages
+    {
         stage("Checkout Code")
         {
             steps
