@@ -21,22 +21,22 @@ services:
     networks:
       - flask_market_network
 
-  # db:
-  #   image: postgres:13
-  #   container_name: market_db
-  #   # restart: always
-  #   ports:
-  #     - 5432:5432
-  #   networks:
-  #     - flask_market_network
-  #   volumes:
-  #     - postgres_market_data:/var/lib/postgres/data
-  #   environment:
-  #     - POSTGRES_USER=admin
-  #     - POSTGRES_PASSWORD=admin
-  #     - POSTGRES_DB=market
+  db:
+    image: postgres:13
+    container_name: market_db
+    # restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - flask_market_network
+    volumes:
+      - postgres_market_data:/var/lib/postgres/data
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=market
 networks:
   flask_market_network:
 
-# volumes:
-#   postgres_market_data:
+volumes:
+  postgres_market_data:
